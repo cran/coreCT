@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Introduction</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>Introduction</h2>
+
+<p>Computed Tomography (CT) imaging has many applications outside the medical field. One such application in the field of environmental science is scanning sediment cores from coastal wetlands, a technique first demonstrated by Davey et al. (2011)<sup>[Davey,</sup> E., C. Wigand, R. Johnson, K. Sundberg, J. Morris, and C. Roman. 2011. Use of computed tomography imaging for quantifying coarse roots, rhizomes, peat, and particle densities in marsh soils. Ecological Applications 21(6): 2156-2171. 
+(<a href="https://www.researchgate.net/profile/Cathleen_Wigand/publication/51662596_Use_of_computed_tomography_imaging_for_quantifying_coarse_roots_rhizomes_peat_and_particle_densities_in_marsh_soils/links/545a34ce0cf2cf5164843a60.pdf">link to .pdf</a>)]. The general goal is typically to quantify various soil/sediment components (particles, sand, water, roots) based on their densities; see sources citing Davey et al. (2011) for specific applications.</p>
+
+<p>CT scanning produces large matrices of metadata-rich files with the .dcm extension. The extension is derived from data standard used in CT scanning, called Digital Imaging and Communications in Medicine (DICOM). The <strong>coreCT</strong> package is a small but powerful set of functions designed to streamline analysis of CT-scanned sediment cores, enabling rapid programmatic processing and synthesis of semi-processed DICOM images. &#39;Semi-processed&#39; means that irrelevant parts of the images (PVC core tubes, etc.) have been masked out, and the only remaining data are for the actual sediment. <strong>coreCT</strong> builds on functionality in other packages, particulary the <strong>oro.dicom</strong> package (Whitcher et al. 2011)<sup>[Whitcher,</sup> B., V. J. Schmid and A. Thornton. 2011. Working with the DICOM and NIfTI Data Standards in R. Journal of Statistical Software 44(6): 1-28. 
+(<a href="http://www.jstatsoft.org/v44/i06">link</a>)] for reading DICOM images and spatial analysis tools in the <strong>raster</strong> and <strong>igraph</strong> packages.</p>
+
+<p>Key features of <strong>coreCT</strong> include:</p>
+
+<ul>
+<li>An integrated workflow, from conversion of DICOM files to image analysis</li>
+<li>Internal calculation of the abundance (area, volume, wet mass) of seven sediment components: air, live roots and rhizomes, water, peat, particles, sand, and rock/shell</li>
+<li>Quantification of root characteristics: external surface area, volume, and mass of roots in user-defined size classes</li>
+</ul>
+
+<p>This vignette introduces basic usage of the <strong>coreCT</strong> functions.</p>
+
+<h2>Data: core_426</h2>
+
+<p>The <code>core_426</code> sample dataset included with <strong>coreCT</strong> includes three DICOM images from a CT-scanned sediment core. Each image represents a 0.625 mm depth interval, so this dataset is very small, but useful for demonstration purposes.</p>
+
+<p>We&#39;ll use this provided dataset to demonstrate how the basic functions <code>conv</code> and <code>rootSize</code> work. These basic functions work with a matrix of DICOM images, but <strong>coreCT</strong> also includes wrapper functions <code>convDir</code> and <code>rootSizeDir</code> that are more flexible, automatically extracting metadata and operating on a directory of raw .dcm files. These wrapper functions load the DICOM images, extract relevant metadata like pixel dimensions, and analyze the images for components and root characteristics.</p>
+
+<h2>Usage</h2>
+
+<p>Using the basic functions requires some initial work to extract metadata and convert the raw values to Hounsfield Units, the standard units for CT output.</p>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-1"/></p>
+
+<p>This can be done more easily with coreCT::convDir, which automatically extracts DICOM metadata associated with pixel dimensions and converts raw values to Hounsfield Units:</p>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-2"/></p>
+
+<p>The conversion from Hounsfield Units to densities is done using calibration rods of known density analyzed with the sediment core. Reasonable default values are provided for four calibrants following Davey et al. (2011): air, water, colloidal silica, and glass. <code>conv</code> internally develops a relationship between the Hounsfield units and known densities of these calibrants, and applies that relationship to derive estimates of component masses by multiplying bulk densities by volumes (\(g.cm^3 * cm^3 = g\)).</p>
+
+<p>Root characteristics are calculated by the <code>rootSize</code> function, which also has a wrapper function <code>rootSizeDir</code> that operates on a directory of raw DICOM images.</p>
+
+<p>By default, root characteristics are calculated when <code>convDir</code> is used, but if root data aren&#39;t of interest or a separate set of DICOM images is being used to quantify roots, time can be saved by including <code>rootData = FALSE</code> as an argument to <code>convDir</code>.</p>
+
+<p>Conversely, root characteristics can be analyzed without quantifying sediment composition. This uses the <code>rootSize</code> function and its metadata-scraping wrapper function, <code>rootSizeDir</code>:</p>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-3"/></p>
+
+</body>
+
+</html>

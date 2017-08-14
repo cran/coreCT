@@ -1,0 +1,7 @@
+conv                    Calculates the area and volume of material from a matrix of processed DICOM images
+convDir                 Calculates the area and volume of material from a directory of raw DICOM images
+getSurface              Remove artificial surface layers
+rootSize                Calculates root surface area from a matrix of processed DICOM images
+rootSizeDir             Calculates root surface area from a directory of raw DICOM images
+core_426                Sample data from a Spartina alterniflora core
+voxDims                 Extract voxel dimensions from DICOM image
