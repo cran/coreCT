@@ -72,19 +72,19 @@ rootSize <- function (mat.list, pixelA,
   # function creates dataframe with root/rhizome numbers and perimeter(!) for each depth interval
   pb <- utils::txtProgressBar(min = 0, max = length(mat.list), initial = 0, style = 3)
   voxelVol <- pixelA * thickness / 1e3 # cm3
-  air.UB <- airHU + airSD # lower bound on R&R, exclusive. earl adds 1 to this quantity to start next category
+  air.UB   <- airHU + airSD # lower bound on R&R, exclusive. earl adds 1 to this quantity to start next category
   water.LB <- waterHU - waterSD # upper bound on R&R, inclusive
   # clump IDs extracted on basis of area
   # with rule: clumps must be greater than 1 pixel
   # this rule is based on comparison of ImageJ and R results
-  diams <- c(0, diameter.classes) # revise diameter classes to include zero
+  diams    <- c(0, diameter.classes) # revise diameter classes to include zero
   thresh.A <- pi*(diams/2)^2 # convert diameter to area
-  thresh.pixels <- round(thresh.A / pixelA)  # convert area to no of pixels (irregular clumps are included; should maybe use floor() instead of round())
+  thresh.pixels    <- round(thresh.A / pixelA)  # convert area to no of pixels (irregular clumps are included; should maybe use floor() instead of round())
   thresh.pixels[1] <- pixel.minimum
   
   for (i in 1:length(mat.list)) {
     depth <- thickness * i / 10 # cm
-    temp <- mat.list[[i]]
+    temp  <- mat.list[[i]]
     
     ### adjust here to get size class mass estimates
     temp[(temp > air.UB) & (temp <= water.LB)] <- 1 # isolate pixels with R&R density, change to 1
