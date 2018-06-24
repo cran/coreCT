@@ -1,3 +1,10 @@
+coreCT version 1.2.3 (release date: 2018-06-24)
+==================
+
+Changes:
+* bug fix in conv(): categories with NAs are excluded from calculation of total masses, volumes, etc.
+
+
 coreCT version 1.2.1 (release date: 2017-09-02)
 ==================
 

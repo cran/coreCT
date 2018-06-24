@@ -12,7 +12,7 @@
 #' returnData = TRUE, pngName = NULL)
 #' 
 #' @param directory a character string that can be (1) a matrix of DICOM images that exists in the global environment, or (2) the address of an individual DICOM file in a folder of DICOM images. The default action is <code>file.choose()</code>; a browser menu appears so the user can select the the desired directory by identifying a single DICOM file in the folder of images.
-#' @param units units used for plotting purposes only: either "percent" (the default) or "absolute". Returned data are always absolute pixel counts. 
+#' @param units units to be used for plotting purposes: either "percent" (the default) or "absolute"
 #' @param upperLim upper bound cutoff for pixels (Hounsfield Units); upper bound is inclusive
 #' @param lowerLim lower bound cutoff for pixels (Hounsfield Units); lower bound is exclusive
 #' @param airHU mean value for air-filled calibration rod (Hounsfield Units)
@@ -66,10 +66,10 @@ coreHist <- function(directory = file.choose(),
   } else stop("Invalid input: 'directory' object or file location is incorrectly specified.")
   
   # divisions between material classes
-  splits <- data.frame(material = c("air",             "RR",                     "water",                  "peat",                   "particles",         "sand",                   "rock_shell"),
-                       lower = c(round(lowerLim),      round(airHU + airSD),     round(waterHU - waterSD), round(waterHU + waterSD), round(SiHU + SiSD), 750,                      round(glassHU + glassSD)), 
+  splits <- data.frame(material = c("air",             "RR",                "water",         "peat",            "particles",         "sand",                   "rock_shell"),
+                       lower = c(round(lowerLim),      round(airHU + airSD), round(waterHU - waterSD), round(waterHU + waterSD),    round(SiHU + SiSD), 750,                      round(glassHU + glassSD)), 
                        #lower = c(round(lowerLim),        round(airHU+airSD) + 1, round(water.LB) + 1, round(water.UB) + 1,    round(SiHU + SiSD) + 1, 750 + 1,                      round(glassHU + glassSD) + 1), 
-                       upper = c(round(airHU + airSD), round(waterHU - waterSD), round(waterHU + waterSD), round(SiHU + SiSD),       750,                round(glassHU + glassSD), round(upperLim)))
+                       upper = c(round(airHU + airSD), round(waterHU - waterSD),      round(waterHU + waterSD), round(SiHU + SiSD), 750,                round(glassHU + glassSD), round(upperLim)))
   
   
   pixelArea <- as.numeric(strsplit(fname$hdr[[1]]$value[fname$hdr[[1]]$name %in% "PixelSpacing"], " ")[[1]][1])^2
@@ -111,7 +111,7 @@ coreHist <- function(directory = file.choose(),
   }
   graphics::par(mar = c(4, 4, 0.5, 0.5))
   graphics::plot(finalFreq / tot ~ Var1, tempDat2[(tempDat2$Var1 < upperLim) & (tempDat2$Var1 > lowerLim), ], cex = 0.7, 
-       pch = 19, las = 1, ylab = ylabel, xlab = "Hounsfield Units", xlim = c(lowerLim, upperLim))
+       pch = 19, las = 1, ylab = ylabel, xlab = "HU", xlim = c(lowerLim, upperLim))
   # add lines and label material classes
   graphics::abline(v = c(lowerLim + 1, splits$upper))
   verticalTextPosition <- max(tempDat2[(tempDat2$Var1 < upperLim) & (tempDat2$Var1 > lowerLim), ], na.rm = TRUE) * c(0.90, 0.70) / tot

@@ -16,7 +16,7 @@ returnData = TRUE, pngName = NULL)
 \arguments{
 \item{directory}{a character string that can be (1) a matrix of DICOM images that exists in the global environment, or (2) the address of an individual DICOM file in a folder of DICOM images. The default action is <code>file.choose()</code>; a browser menu appears so the user can select the the desired directory by identifying a single DICOM file in the folder of images.}
 
-\item{units}{units used for plotting purposes only: either "percent" (the default) or "absolute". Returned data are always absolute pixel counts.}
+\item{units}{units to be used for plotting purposes: either "percent" (the default) or "absolute"}
 
 \item{upperLim}{upper bound cutoff for pixels (Hounsfield Units); upper bound is inclusive}
 
