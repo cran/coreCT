@@ -1,18 +1,34 @@
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/coreCT)](https://cran.r-project.org/package=coreCT)
+# coreCT
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/coreCT)](https://cran.r-project.org/package=coreCT) 
+[![Build Status](https://travis-ci.org/troyhill/coreCT.svg?branch=master)](https://travis-ci.org/troyhill/coreCT) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/troyhill/coreCT?branch=master&svg=true)](https://ci.appveyor.com/project/troyhill/coreCT) [![codecov.io](https://codecov.io/github/troyhill/coreCT/coverage.svg?branch=master)](https://codecov.io/github/troyhill/coreCT?branch=master) [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/coreCT-dev/community)
+
+[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/coreCT)](https://cran.r-project.org/package=coreCT) [![](http://cranlogs.r-pkg.org/badges/grand-total/coreCT)](https://cran.r-project.org/package=coreCT) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.889651.svg)](https://doi.org/10.5281/zenodo.889651) 
+
+  
+    
+
+## Installing **coreCT**
+
+**coreCT** is available on CRAN and can be installed from the R console:
+
+    install.packages("coreCT") 
+    
 
 
-[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/coreCT)](https://cran.r-project.org/package=coreCT)
+Once installed, the package can be loaded:
+    
+    library(coreCT)
 
+  
+  
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.889651.svg)](https://doi.org/10.5281/zenodo.889651)
-
-
-### About **coreCT**
+## About **coreCT**
 
 **coreCT** is an [R package](https://cran.r-project.org/package=coreCT) for programmatic analysis of sediment cores that have been digitized by computed tomography. The package converts Hounsfield Units to material classes (e.g., peat, root/rhizome, sand) and quantifies component masses and volumes. To get started quickly, check out the package vignette.
 
 
-### Sediment core characterization
+## Sediment core characterization
 
 **coreCT** output can be easily plotted using the **reshape2** and **ggplot2** packages (figures below were produced using the same code included in the help file examples).
 
@@ -35,17 +51,9 @@
 
 
 
-### Installing **coreCT**
 
-**coreCT** is available on CRAN and can be installed by typing:
-    install.packages("coreCT") 
-    
+## License and disclaimer
 
-To install and load the development version of coreCT, run the following commands in R:
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-    install.packages("devtools") # if devtools isn't already installed
-
-    devtools::install_github("troyhill/coreCT")
-
-    library(coreCT)
-
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.
