@@ -7,13 +7,12 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta name="author" content="Troy D. Hill" />
 
-<meta name="date" content="2019-09-23" />
+<meta name="date" content="2019-11-27" />
 
 <title>Using coreCT</title>
 
@@ -21,41 +20,67 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 
 </style>
 <script>
@@ -71,7 +96,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -82,7 +107,189 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -96,14 +303,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Using coreCT</h1>
 <h4 class="author">Troy D. Hill</h4>
-<h4 class="date">2019-09-23</h4>
+<h4 class="date">2019-11-27</h4>
 
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Computed Tomography (CT) imaging has many applications outside the medical field. One such application in the field of environmental science is scanning sediment cores from coastal wetlands, a technique first demonstrated by Davey et al. (2011)<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>. The general goal is typically to quantify various soil/sediment components (particles, sand, water, roots) based on their densities; see sources citing Davey et al. (2011) for specific applications.</p>
-<p>CT scanning produces large matrices of metadata-rich files with the .dcm extension. The extension is derived from data standard used in CT scanning, called Digital Imaging and Communications in Medicine (DICOM). The <strong>coreCT</strong> package is a small but powerful set of functions designed to streamline analysis of CT-scanned sediment cores, enabling rapid programmatic processing and synthesis of semi-processed DICOM images. ‘Semi-processed’ means that irrelevant parts of the images (PVC core tubes, etc.) have been masked out, and the only remaining data are for the actual sediment. <strong>coreCT</strong> builds on functionality in other packages, particulary the <strong>oro.dicom</strong> package (Whitcher et al. 2011)<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> for reading DICOM images and spatial analysis tools in the <strong>raster</strong> and <strong>igraph</strong> packages.</p>
+<p>Computed Tomography (CT) imaging has many applications outside the medical field. One such application in the field of environmental science is scanning sediment cores from coastal wetlands, a technique first demonstrated by Davey et al. (2011)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. The general goal is typically to quantify various soil/sediment components (particles, sand, water, roots) based on their densities; see sources citing Davey et al. (2011) for specific applications.</p>
+<p>CT scanning produces large matrices of metadata-rich files with the .dcm extension. The extension is derived from data standard used in CT scanning, called Digital Imaging and Communications in Medicine (DICOM). The <strong>coreCT</strong> package is a small but powerful set of functions designed to streamline analysis of CT-scanned sediment cores, enabling rapid programmatic processing and synthesis of semi-processed DICOM images. ‘Semi-processed’ means that irrelevant parts of the images (PVC core tubes, etc.) have been masked out, and the only remaining data are for the actual sediment. <strong>coreCT</strong> builds on functionality in other packages, particulary the <strong>oro.dicom</strong> package (Whitcher et al. 2011)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> for reading DICOM images and spatial analysis tools in the <strong>raster</strong> and <strong>igraph</strong> packages.</p>
 <p>Key features of <strong>coreCT</strong> include:</p>
 <ul>
 <li>An integrated workflow, from conversion of DICOM files to image analysis</li>
@@ -122,19 +329,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Using the basic functions requires some initial work to extract metadata and convert the raw values to Hounsfield Units, the standard units for CT output.</p>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>This can be done more easily with coreCT::convDir, which automatically extracts DICOM metadata associated with pixel dimensions and converts raw values to Hounsfield Units:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">materials &lt;-<span class="st"> </span><span class="kw">convDir</span>(<span class="st">&quot;core_426&quot;</span>)
-
-<span class="kw">plot</span>(<span class="op">-</span>depth <span class="op">~</span><span class="st"> </span>peat.cm3, <span class="dt">data =</span> materials, <span class="dt">xlab =</span> <span class="st">&quot;Peat volume (cm3; per slice)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Depth (cm)&quot;</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">materials &lt;-<span class="st"> </span><span class="kw">convertDir</span>(<span class="st">&quot;core_426&quot;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">plot</span>(<span class="op">-</span>depth <span class="op">~</span><span class="st"> </span>peat.cm3, <span class="dt">data =</span> materials, <span class="dt">xlab =</span> <span class="st">&quot;Peat volume (cm3; per slice)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Depth (cm)&quot;</span>)</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 </div>
 <div id="examining-component-distributions" class="section level2">
 <h2>Examining component distributions</h2>
-<p>The conversion from Hounsfield Units to particle densities is done using calibration rods of known density analyzed with the sediment core. Reasonable default values are provided for four calibrants following Davey et al. (2011): air, water, colloidal silica, and glass. These values are used to define thresholds between soil components. These thresholds, and the distribution of values in the whole data series, can be visualized and returned by <code>coreHist</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">HUfreq &lt;-<span class="st"> </span><span class="kw">coreHist</span>(<span class="st">&quot;core_426&quot;</span>)</code></pre></div>
+<p>The conversion from Hounsfield Units to particle densities is done using calibration rods of known density analyzed with the sediment core. Reasonable default values are provided for four calibrants following Davey et al. (2011): air, water, colloidal silica, and glass. These values are used to define thresholds between soil components. These thresholds, and the distribution of values in the whole data series, can be visualized and returned by <code>coreHist</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">HUfreq &lt;-<span class="st"> </span><span class="kw">coreHist</span>(<span class="st">&quot;core_426&quot;</span>)</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(HUfreq)</code></pre></div>
-<pre><code>## [1] &quot;histData&quot; &quot;splits&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">HUfreq<span class="op">$</span>splits</code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">names</span>(HUfreq)</a></code></pre></div>
+<pre><code>## [1] &quot;histData&quot; &quot;splits&quot;   &quot;calCurve&quot;</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">HUfreq<span class="op">$</span>splits</a></code></pre></div>
 <pre><code>##     material lower upper
 ## 1        air -1025  -818
 ## 2         RR  -818    86
@@ -143,30 +350,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## 5  particles   369   750
 ## 6       sand   750  1342
 ## 7 rock_shell  1342  3045</code></pre>
-<p><code>conv</code> uses these calibration data to classify voxels into material classes and then calculate four quantities for each of the seven material classes, for each image: (1) average Hounsfield units, (2) total 2D surface area (<span class="math inline">\(cm^2\)</span>), (3) volume (<span class="math inline">\(cm^3\)</span>), and (4) mass (g).</p>
+<p><code>convert</code> uses these calibration data to classify voxels into material classes and then calculate four quantities for each of the seven material classes, for each image: (1) average Hounsfield units, (2) total 2D surface area (<span class="math inline">\(cm^2\)</span>), (3) volume (<span class="math inline">\(cm^3\)</span>), and (4) mass (g).</p>
 <p>The 2D surface area (<span class="math inline">\(cm^2\)</span>) is calculated as simply the number of pixels in each class, multiplied by the pixel area. Multiplying 2D surface area by the image thickness provides the volume of each component (reported in <span class="math inline">\(cm^3\)</span>). The relationship between calibration rod Hounsfield units and particle densities is then applied to estimate component masses, by multiplying each voxel’s bulk density by its volume (<span class="math inline">\(g.cm^3 * cm^3 = g\)</span>).</p>
 </div>
 <div id="focusing-on-roots-and-rhizomes" class="section level2">
 <h2>Focusing on roots and rhizomes</h2>
-<p>Root characteristics are calculated by the <code>rootSize</code> function, which also has a wrapper function <code>rootSizeDir</code> that operates on a directory of raw DICOM images.</p>
-<p>By default, root characteristics are calculated when <code>convDir</code> is used, but if root data aren’t of interest or a separate set of DICOM images is being used to quantify roots, time can be saved by including <code>rootData = FALSE</code> as an argument to <code>convDir</code>.</p>
-<p>Conversely, root characteristics can be analyzed without quantifying sediment composition. This uses the <code>rootSize</code> function and its metadata-scraping wrapper function, <code>rootSizeDir</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rootChars &lt;-<span class="st"> </span><span class="kw">rootSizeDir</span>(<span class="st">&quot;core_426&quot;</span>, <span class="dt">diameter.classes =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">10</span>))
-
-<span class="kw">plot</span>(<span class="op">-</span>depth <span class="op">~</span><span class="st"> </span>structures, <span class="dt">data =</span> rootChars, <span class="dt">xlab =</span> <span class="st">&quot;Root structures (per slice)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Depth (cm)&quot;</span>)</code></pre></div>
+<p>Root characteristics are calculated by the <code>getRoots</code> function, which also has a wrapper function <code>getRootsDir</code> that operates on a directory of raw DICOM images.</p>
+<p>By default, root characteristics are calculated when <code>convertDir</code> is used, but if root data aren’t of interest or a separate set of DICOM images is being used to quantify roots, time can be saved by including <code>rootData = FALSE</code> as an argument to <code>convertDir</code>.</p>
+<p>Conversely, root characteristics can be analyzed without quantifying sediment composition. This uses the <code>getRoots</code> function and its metadata-scraping wrapper function, <code>getRootsDir</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">rootChars &lt;-<span class="st"> </span><span class="kw">getRootsDir</span>(<span class="st">&quot;core_426&quot;</span>, <span class="dt">diameter.classes =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="fl">2.5</span>, <span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb7-2" title="2"></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="kw">plot</span>(<span class="op">-</span>depth <span class="op">~</span><span class="st"> </span>structures, <span class="dt">data =</span> rootChars, <span class="dt">xlab =</span> <span class="st">&quot;Root structures (per slice)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Depth (cm)&quot;</span>)</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="a-note-on-differences-introduced-in-version-1.3.0" class="section level2">
+<h2>A note on differences introduced in version 1.3.0</h2>
+<p>Version 1.3.0 marked a major update to the classification approach used in this package. The package initially set out to directly replicate Earl Davey’s manual classification method. In Davey’s original approach, four calibration rods are used, and the divisions between sediment material classes are determined by the Hounsfield Unit values of the calibration rods themselves. As of coreCT version 1.3.0, the calibration curve can be populated by more than four calibrants. The user provides the calibration rod mean values as a vector (rather than individually), the calibration rod standard deviations also as a vector, as well as the density thresholds to be used in partitioning sediment components. The user should, however, still include the original four calibration rods (air, water, 34% Si, and glass). This modification was made in part to simply allow the user to add more calibrants, perhaps including an ethanol calibration rod (density 0.8) to fill in the large gap in the calibration curve between 0.0012 g/cm3 (air) and 1.0 g/cm3 (water).</p>
+<p>Another major change in coreCT version 1.3.0 was that the divisions between sediment components are defined based on density divisions rather than cal rod values. This change was in response to the realization that not all glass rods have the same density as the 2.2 g/cm3 rods used in the original Davey et al. 2011 study. The new approach instead starts from Davey et al.’s density thresholds (0.0012, 1, 1.23, and 2.2 g/cm3). The corresponding Hounsfield Unit values are estimated from those densities using the calibration curve data. The standard deviation of the calibration rod nearest to each density threshold is used to define upper and lower bounds for the material classes.</p>
+<p>The original Davey method is preserved in deprecated functions included in the package - conv, convDir, rootSize, and rootSizeDir. But these functions will not be maintained and are superceded by convert, convertDir, getRoots, and getRootsDir.</p>
 </div>
 <div class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Davey, E., C. Wigand, R. Johnson, K. Sundberg, J. Morris, and C. Roman. 2011. Use of computed tomography imaging for quantifying coarse roots, rhizomes, peat, and particle densities in marsh soils. Ecological Applications 21(6): 2156-2171. (<a href="https://doi.org/10.1890/10-2037.1">link to manuscript</a>)<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Whitcher, B., V. J. Schmid and A. Thornton. 2011. Working with the DICOM and NIfTI Data Standards in R. Journal of Statistical Software 44(6): 1-28. (<a href="http://www.jstatsoft.org/v44/i06">link</a>)<a href="#fnref2">↩</a></p></li>
+<li id="fn1"><p>Davey, E., C. Wigand, R. Johnson, K. Sundberg, J. Morris, and C. Roman. 2011. Use of computed tomography imaging for quantifying coarse roots, rhizomes, peat, and particle densities in marsh soils. Ecological Applications 21(6): 2156-2171. (<a href="https://doi.org/10.1890/10-2037.1">link to manuscript</a>)<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Whitcher, B., V. J. Schmid and A. Thornton. 2011. Working with the DICOM and NIfTI Data Standards in R. Journal of Statistical Software 44(6): 1-28. (<a href="http://www.jstatsoft.org/v44/i06">link</a>)<a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
-
-
-<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
