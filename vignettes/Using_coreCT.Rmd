@@ -4,7 +4,7 @@ author: "Troy D. Hill"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using_coreCT}
+  %\VignetteIndexEntry{Using coreCT}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,7 +15,7 @@ Computed Tomography (CT) imaging has many applications outside the medical field
 ([link to manuscript](https://doi.org/10.1890/10-2037.1))]. The general goal is typically to quantify various soil/sediment components (particles, sand, water, roots) based on their densities; see sources citing Davey et al. (2011) for specific applications.
 
 CT scanning produces large matrices of metadata-rich files with the .dcm extension. The extension is derived from data standard used in CT scanning, called Digital Imaging and Communications in Medicine (DICOM). The **coreCT** package is a small but powerful set of functions designed to streamline analysis of CT-scanned sediment cores, enabling rapid programmatic processing and synthesis of semi-processed DICOM images. 'Semi-processed' means that irrelevant parts of the images (PVC core tubes, etc.) have been masked out, and the only remaining data are for the actual sediment. **coreCT** builds on functionality in other packages, particulary the **oro.dicom** package (Whitcher et al. 2011)^[Whitcher, B., V. J. Schmid and A. Thornton. 2011. Working with the DICOM and NIfTI Data Standards in R. Journal of Statistical Software 44(6): 1-28. 
-([link](http://www.jstatsoft.org/v44/i06))] for reading DICOM images and spatial analysis tools in the **raster** and **igraph** packages.
+([link](https://www.jstatsoft.org/v44/i06))] for reading DICOM images and spatial analysis tools in the **raster** and **igraph** packages.
 
 Key features of **coreCT** include:
 
@@ -52,7 +52,7 @@ plot(-depth ~ peat.cm3, data = materials, xlab = "Peat volume (cm3; per slice)",
 This can be done more easily with coreCT::convDir, which automatically extracts DICOM metadata associated with pixel dimensions and converts raw values to Hounsfield Units:
 
 ```{r, message=FALSE, warning=FALSE, results = "hide"}
-materials <- convertDir("core_426")
+materials <- convertDir("core_426", rootData = FALSE)
 
 plot(-depth ~ peat.cm3, data = materials, xlab = "Peat volume (cm3; per slice)", ylab = "Depth (cm)")
 ```

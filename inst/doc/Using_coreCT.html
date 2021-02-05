@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <meta name="author" content="Troy D. Hill" />
 
-<meta name="date" content="2019-11-27" />
+<meta name="date" content="2021-02-05" />
 
 <title>Using coreCT</title>
 
@@ -96,7 +96,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -117,9 +117,6 @@ padding-right: 2em;
 font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
 line-height: 1.35;
-}
-#header {
-text-align: center;
 }
 #TOC {
 clear: both;
@@ -288,7 +285,8 @@ code > span.st { color: #d14; }
 code > span.co { color: #888888; font-style: italic; } 
 code > span.ot { color: #007020; } 
 code > span.al { color: #ff0000; font-weight: bold; } 
-code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
 </style>
 
 
@@ -303,7 +301,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Using coreCT</h1>
 <h4 class="author">Troy D. Hill</h4>
-<h4 class="date">2019-11-27</h4>
+<h4 class="date">2021-02-05</h4>
 
 
 
@@ -329,7 +327,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>Using the basic functions requires some initial work to extract metadata and convert the raw values to Hounsfield Units, the standard units for CT output.</p>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>This can be done more easily with coreCT::convDir, which automatically extracts DICOM metadata associated with pixel dimensions and converts raw values to Hounsfield Units:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">materials &lt;-<span class="st"> </span><span class="kw">convertDir</span>(<span class="st">&quot;core_426&quot;</span>)</a>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">materials &lt;-<span class="st"> </span><span class="kw">convertDir</span>(<span class="st">&quot;core_426&quot;</span>, <span class="dt">rootData =</span> <span class="ot">FALSE</span>)</a>
 <a class="sourceLine" id="cb1-2" title="2"></a>
 <a class="sourceLine" id="cb1-3" title="3"><span class="kw">plot</span>(<span class="op">-</span>depth <span class="op">~</span><span class="st"> </span>peat.cm3, <span class="dt">data =</span> materials, <span class="dt">xlab =</span> <span class="st">&quot;Peat volume (cm3; per slice)&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Depth (cm)&quot;</span>)</a></code></pre></div>
 <p><img src="data:image/png;base64,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" /><!-- --></p>
@@ -373,10 +371,13 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <hr />
 <ol>
 <li id="fn1"><p>Davey, E., C. Wigand, R. Johnson, K. Sundberg, J. Morris, and C. Roman. 2011. Use of computed tomography imaging for quantifying coarse roots, rhizomes, peat, and particle densities in marsh soils. Ecological Applications 21(6): 2156-2171. (<a href="https://doi.org/10.1890/10-2037.1">link to manuscript</a>)<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Whitcher, B., V. J. Schmid and A. Thornton. 2011. Working with the DICOM and NIfTI Data Standards in R. Journal of Statistical Software 44(6): 1-28. (<a href="http://www.jstatsoft.org/v44/i06">link</a>)<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Whitcher, B., V. J. Schmid and A. Thornton. 2011. Working with the DICOM and NIfTI Data Standards in R. Journal of Statistical Software 44(6): 1-28. (<a href="https://www.jstatsoft.org/v44/i06">link</a>)<a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
+
+
+<!-- code folding -->
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

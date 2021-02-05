@@ -1,4 +1,4 @@
-## ---- echo = FALSE, message=FALSE, warning=FALSE, results = "hide"-------
+## ---- echo = FALSE, message=FALSE, warning=FALSE, results = "hide"------------
 library(coreCT)
 # extract metadata and convert raw values to Hounsfield Units
 ct.slope <- unique(extractHeader(core_426$hdr, "RescaleSlope"))
@@ -10,18 +10,18 @@ materials <- convert(HU_426, pixelA = voxDims("core_426")$pixelArea.mm2, thickne
 
 plot(-depth ~ peat.cm3, data = materials, xlab = "Peat volume (cm3; per slice)", ylab = "Depth (cm)")
 
-## ---- message=FALSE, warning=FALSE, results = "hide"---------------------
-materials <- convertDir("core_426")
+## ---- message=FALSE, warning=FALSE, results = "hide"--------------------------
+materials <- convertDir("core_426", rootData = FALSE)
 
 plot(-depth ~ peat.cm3, data = materials, xlab = "Peat volume (cm3; per slice)", ylab = "Depth (cm)")
 
-## ---- message=FALSE, warning=FALSE---------------------------------------
+## ---- message=FALSE, warning=FALSE--------------------------------------------
 HUfreq <- coreHist("core_426")
 
 names(HUfreq)
 HUfreq$splits
 
-## ---- message=FALSE, warning=FALSE, results = "hide"---------------------
+## ---- message=FALSE, warning=FALSE, results = "hide"--------------------------
 rootChars <- getRootsDir("core_426", diameter.classes = c(1, 2.5, 10))
 
 plot(-depth ~ structures, data = rootChars, xlab = "Root structures (per slice)", ylab = "Depth (cm)")
